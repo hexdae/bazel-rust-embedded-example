@@ -1,0 +1,13 @@
+diff --git a/toolchain/BUILD b/toolchain/BUILD
+index 9dbfbf3..c402552 100644
+--- a/toolchain/BUILD
++++ b/toolchain/BUILD
+@@ -75,7 +75,7 @@ toolchain(
+     ],
+     target_compatible_with = [
+         "@platforms//os:none",
+-        "@platforms//cpu:arm",
++        "@platforms//cpu:armv7e-mf",
+     ],
+     toolchain = ":cc_toolchain_darwin",
+     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",

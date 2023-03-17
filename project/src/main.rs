@@ -15,7 +15,7 @@ fn panic(_: &core::panic::PanicInfo) -> ! {
 }
 
 fn blink<T: OutputPin>(timer: &mut hal::delay::Delay, led: &mut T) {
-    const BLINK_DELAY: u16 = 100;
+    const BLINK_DELAY: u16 = 300;
     led.set_low().unwrap_or_else(|_x| panic!());
     timer.delay_ms(BLINK_DELAY);
     led.set_high().unwrap_or_else(|_x| panic!());

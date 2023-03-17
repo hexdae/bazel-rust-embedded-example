@@ -1,0 +1,14 @@
+diff --git a/utils/uf2conv.py b/utils/uf2conv.py
+index 82b0b10..63fa4e0 100755
+--- utils/uf2conv.py
++++ utils/uf2conv.py
+@@ -349,7 +349,8 @@ def main():
+                         sleep(0.1)
+                         drives = get_drives()
+                 elif not args.output:
+-                    error("No drive to deploy.")
++                    print("No drive to deploy.")
++                    sys.exit(0)
+             for d in drives:
+                 print("Flashing %s (%s)" % (d, board_id(d)))
+                 write_file(d + "/NEW.UF2", outbuf)
