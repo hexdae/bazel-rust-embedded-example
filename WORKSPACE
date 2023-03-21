@@ -1,8 +1,8 @@
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # ###############################################################################
-# ARM none ebai gcc
+# ARM none eabi gcc
 # ###############################################################################
 git_repository(
     name = "arm_none_eabi",
