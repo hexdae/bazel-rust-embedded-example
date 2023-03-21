@@ -39,9 +39,6 @@ rust_register_toolchains(
 # # CARGO Crates
 # ###############################################################################
 load("@rules_rust//crate_universe:defs.bzl", "crates_repository")
-load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
-
-crate_universe_dependencies(bootstrap = True)
 
 crates_repository(
     name = "crates",
