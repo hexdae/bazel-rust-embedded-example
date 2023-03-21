@@ -1,6 +1,3 @@
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = ".cargo/tools/uf2 --base 0x27000 --family 0xADA52840"
-
 [build]
 target = "thumbv7em-none-eabihf"
 

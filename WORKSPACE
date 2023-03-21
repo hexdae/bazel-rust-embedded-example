@@ -6,9 +6,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # ###############################################################################
 git_repository(
     name = "arm_none_eabi",
-    commit = "52966525aa98ba8054b093336cc6aeb7e7b85259",
-    patch_args = ["-p1"],
-    patches = ["//third_party/rules_arm_gcc:diff.patch"],
+    commit = "88d8e25b06be484188b04905f11f2788d302aa72",
     remote = "https://github.com/hexdae/bazel-arm-none-eabi",
 )
 
@@ -40,38 +38,21 @@ rust_register_toolchains(
 # ###############################################################################
 # # CARGO Crates
 # ###############################################################################
-load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository")
+load("@rules_rust//crate_universe:defs.bzl", "crates_repository")
 load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
 
 crate_universe_dependencies(bootstrap = True)
 
 crates_repository(
     name = "crates",
-    annotations = {
-        "critical-section": [crate.annotation(
-            deps = ["@crates__cortex-m-0.7.6//:cortex_m"],
-        )],
-    },
     cargo_lockfile = "//:Cargo.lock",
     lockfile = "//:cargo-bazel-lock.json",
-    manifests = ["//project:Cargo.toml"],
-    rust_version = "1.64.0",
+    manifests = [
+        "//:Cargo.toml",
+        "//project:Cargo.toml",
+    ],
 )
 
 load("@crates//:defs.bzl", "crate_repositories")
 
 crate_repositories()
-
-
-
-# ###############################################################################
-# UF2 tools
-# ###############################################################################
-new_git_repository(
-    name = "uf2",
-    build_file = "//third_party/uf2:uf2.BUILD",
-    commit = "162acf4e4cb7c8e9ec589c842d277dcb5c43db89",
-    patches = ["//third_party/uf2:uf2.patch"],
-    remote = "https://github.com/microsoft/uf2",
-    shallow_since = "1658848581 +0200",
-)
